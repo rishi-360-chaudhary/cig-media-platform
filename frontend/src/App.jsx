@@ -24,7 +24,7 @@ function App() {
   const [notification, setNotification] = useState(null);
 
   useEffect(() => {
-    const socket = io('http://localhost:8000',{
+    const socket = io(import.meta.env.VITE_API_URL,{
       withCredentials: true
     });
 
