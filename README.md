@@ -4,6 +4,18 @@
 
 ---
 
+## 🌐 Live Deployment
+
+| Service | Platform | URL |
+|---------|----------|-----|
+| Frontend | Vercel | https://cig-media-platform-cyan.vercel.app |
+| Backend API | Render | https://cig-media-platform-1azc.onrender.com |
+| API Docs | Swagger UI | https://cig-media-platform-1azc.onrender.com/api-docs |
+
+> ⚠️ The backend is hosted on Render's free tier and may take **30–60 seconds to wake up** on the first request after inactivity.
+
+---
+
 ## Table of Contents
 
 - [About the Project](#about-the-project)
@@ -17,7 +29,7 @@
 - [Environment Variables](#environment-variables)
 - [API Documentation](#api-documentation)
 - [Project Structure](#project-structure)
-- [Developed By](#team)
+- [Developed By](#developed-by)
 
 ---
 
@@ -112,12 +124,9 @@ Media ──< Comment     (one media receives many comments)
 The easiest way to run the entire stack with a single command:
 
 ```bash
-git clone https://github.com/your-username/cig-media-platform.git
+git clone https://github.com/rishi-360-chaudhary/cig-media-platform.git
 cd cig-media-platform
-
-# Create your environment variables in the backend folder
-touch backend/.env    # Then open this file and paste your credentials
-
+touch backend/.env    # Open this file and paste your credentials
 docker-compose up --build
 ```
 
@@ -143,7 +152,7 @@ npm run dev
 
 ## Environment Variables
 
-Create a `.env` file in the `backend/` directory based on the following:
+Create a `.env` file in the `backend/` directory:
 
 ```env
 # Server
@@ -160,6 +169,9 @@ AWS_ACCESS_KEY_ID=your_aws_access_key
 AWS_SECRET_ACCESS_KEY=your_aws_secret_key
 AWS_BUCKET_NAME=your_s3_bucket_name
 AWS_REGION=your_aws_region
+
+# CORS
+CORS_ORIGIN=http://localhost:5173
 ```
 
 > ⚠️ Never commit your `.env` file. It is already listed in `.gitignore`.
@@ -168,11 +180,10 @@ AWS_REGION=your_aws_region
 
 ## API Documentation
 
-Full API documentation is available via **Swagger UI** once the backend is running:
+Full API documentation is available via **Swagger UI**:
 
-```
-http://localhost:8000/api-docs
-```
+- **Local:** `http://localhost:8000/api-docs`
+- **Live:** `https://cig-media-platform-1azc.onrender.com/api-docs`
 
 All routes across **Auth**, **Events**, and **Media** are documented with request/response schemas and can be tested directly in the browser.
 
@@ -190,15 +201,12 @@ cig-media-platform/
 │   ├── Dockerfile
 │   └── vite.config.js
 ├── backend/
-│   ├── models/
-│   │   ├── User.js
-│   │   ├── Event.js
-│   │   ├── Media.js
-│   │   ├── Like.js
-│   │   └── Comment.js
-│   ├── routes/
-│   ├── controllers/
-│   ├── middleware/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── middlewares/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── utils/
 │   ├── Dockerfile
 │   └── server.js
 ├── docker-compose.yml
@@ -209,4 +217,5 @@ cig-media-platform/
 
 ## Developed By
 
-**Rishi Chaudhary** Indian Institute of Technology (IIT) Roorkee
+**Rishi Chaudhary**
+Indian Institute of Technology (IIT) Roorkee · 23117116 · 4th Year, Mechanical Engineering
